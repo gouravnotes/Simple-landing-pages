@@ -15,7 +15,7 @@ body{min-height:100svh;overflow:hidden;padding:max(var(--edge),env(safe-area-ins
 .theme:hover{background:var(--soft)}
 .theme svg{width:18px;height:18px}
 .logo {
-      width: clamp(210px, 42vw, 320px);
+      width: clamp(206px, 42vw, 316px);
       max-width: 82vw;
       height: auto;
       display: block;
@@ -36,9 +36,9 @@ body{min-height:100svh;overflow:hidden;padding:max(var(--edge),env(safe-area-ins
 .link{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;color:var(--fg);text-decoration:none}
 .link:hover{opacity:.55}
 .link svg{width:18px;height:18px}
-@media(max-width:420px){.logo{width:clamp(160px,62vw,200px);max-width:100%;margin:0 auto 24px}.search{padding-inline:clamp(22px,7vw,34px)}.links{margin-top:22px;gap:7px}}
-@media(max-width:340px){.logo{width:min(170px,82vw);max-width:100%;margin-inline:auto}.search{padding-inline:16px}.go{width:40px;height:40px;flex-basis:40px}}
-@media(max-height:480px) and (orientation:landscape){.logo{width:min(190px,42vw);max-width:100%;margin:0 auto 14px}.links{margin-top:12px}}
+@media(max-width:420px){.logo{width:clamp(156px,62vw,196px);max-width:100%;margin:0 auto 24px}.search{padding-inline:clamp(22px,7vw,34px)}.links{margin-top:22px;gap:7px}}
+@media(max-width:340px){.logo{width:min(166px,82vw);max-width:100%;margin-inline:auto}.search{padding-inline:16px}.go{width:40px;height:40px;flex-basis:40px}}
+@media(max-height:480px) and (orientation:landscape){.logo{width:min(186px,42vw);max-width:100%;margin:0 auto 14px}.links{margin-top:12px}}
 body.beige{--bg:#f2eadb;--fg:#171512;--muted:#81786b;--soft:rgba(0,0,0,.06)}
 .logo svg { width: 100%; height: auto; display: block; overflow: visible; }
     .logo svg path[fill="#fff"] { fill: #fff; }
@@ -52,7 +52,7 @@ body.beige{--bg:#f2eadb;--fg:#171512;--muted:#81786b;--soft:rgba(0,0,0,.06)}
 <meta name="apple-mobile-web-app-title" content="YouTube">
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 
-<link rel="icon" type="image/svg+xml" href="./icons/youtube.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 </head>
 <body>
 <button class="theme" id="theme" aria-label="Toggle theme">
@@ -75,38 +75,81 @@ body.beige{--bg:#f2eadb;--fg:#171512;--muted:#81786b;--soft:rgba(0,0,0,.06)}
   </svg>
 </a>
 
-<form class="search" action="https://www.youtube.com/results" method="get">
+<form class="search" id="searchForm" role="search" autocomplete="off">
 <label for="q" style="position:absolute;clip:rect(0 0 0 0);width:1px;height:1px;overflow:hidden">Search YouTube</label>
-<input id="q" class="input" name="search_query" type="search" placeholder="Search" autocomplete="off" spellcheck="false" required>
-<button class="go" type="submit" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.7"/><path d="M15.5 15.5 21 21"/></svg></button>
+<input id="q" class="input" type="search" placeholder="Search" autocomplete="off" spellcheck="false" required>
+<button class="go" type="submit" aria-label="Search" title="Search">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.7"/><path d="M15.5 15.5 21 21"/></svg>
+</button>
 </form>
 
 <nav class="links" aria-label="Shortcuts">
 <a class="link" href="https://www.youtube.com/@BhajanMarg/videos" aria-label="Premanand Maharaj Ji" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/@BhajanMarg/videos');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20s-7-4.3-7-10.1A4.1 4.1 0 0 1 12 7a4.1 4.1 0 0 1 7 2.9C19 15.7 12 20 12 20Z"/><path d="M12 7V4M9.5 4h5"/></svg></a>
-<a class="link" href="https://www.youtube.com/feed/channels" aria-label="Subscriptions" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/feed/channels');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.8-3.5 3.2-5.5 7.5-5.5s6.7 2 7.5 5.5M19 5v4M17 7h4"/></svg></a>
+<a class="link" href="https://www.youtube.com/feed/channels" aria-label="Subscriptions" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/feed/subscriptions');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20c.8-3.5 3.2-5.5 7.5-5.5s6.7 2 7.5 5.5M19 5v4M17 7h4"/></svg></a>
 <a class="link" href="https://www.youtube.com/feed/library" aria-label="Library" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/feed/library');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 5.5h14v13H5z"/><path d="m10 9 5 3-5 3V9z"/></svg></a>
 <a class="link" href="https://www.youtube.com/playlist?list=WL" aria-label="Saved" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/playlist?list=WL');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 4.5h12v16l-6-3.5-6 3.5v-16z"/><path d="M9 8.5h6M12 6v5"/></svg></a>
 <a class="link" href="https://www.youtube.com/feed/history" aria-label="History" onclick="event.preventDefault();openYouTubeInBrowser('https://www.youtube.com/feed/history');"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 5v5h5M12 7v5l3.5 2"/></svg></a>
 </nav>
 </main>
 <script>
-const b=document.getElementById('theme');b.onclick=()=>{document.body.classList.toggle('beige');document.querySelector('meta[name="theme-color"]').setAttribute('content',document.body.classList.contains('beige')?'#f2eadb':'#000000');};
-</script>
+const b = document.getElementById("theme");
+b.onclick = () => {
+  document.body.classList.toggle("beige");
+  document.querySelector('meta[name="theme-color"]').setAttribute(
+    "content",
+    document.body.classList.contains("beige") ? "#f2eadb" : "#000000"
+  );
+};
 
-<script>
 function openYouTubeInBrowser(url) {
   if (/Android/i.test(navigator.userAgent)) {
+    const target = new URL(url);
     const intent =
       "intent://www.youtube.com" +
-      new URL(url).pathname +
-      new URL(url).search +
+      target.pathname +
+      target.search +
+      target.hash +
       "#Intent;scheme=https;package=com.android.chrome;end";
     window.location.href = intent;
   } else {
     window.open(url, "_blank", "noopener,noreferrer");
   }
 }
-</script>
 
+(() => {
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("q");
+
+  searchForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const query = searchInput.value.trim();
+    if (!query) {
+      searchInput.focus();
+      return;
+    }
+
+    const url =
+      "https://www.youtube.com/results?search_query=" +
+      encodeURIComponent(query);
+
+    searchInput.value = "";
+    openYouTubeInBrowser(url);
+  });
+
+  document.querySelectorAll("a.link, a.logo").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openYouTubeInBrowser(link.href);
+    });
+  });
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => {});
+    });
+  }
+})();
+</script>
 </body>
 </html>

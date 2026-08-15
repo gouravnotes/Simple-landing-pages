@@ -1,9 +1,8 @@
-const CACHE = "youtube-pwa-final-v1";
+const CACHE = "youtube-pwa-final-v3";
 const SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
-  "./icons/youtube.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png"
 ];
